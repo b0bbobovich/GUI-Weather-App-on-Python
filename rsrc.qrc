@@ -1,0 +1,10 @@
+<RCC>
+  <qresource prefix="Sun">
+    <file>Icons/icons8-cloud-lightning-96.png</file>
+    <file>Icons/icons8-fog-62.png</file>
+    <file>Icons/icons8-snow-96.png</file>
+    <file>Icons/icons8-partly-cloudy-day-96.png</file>
+    <file>Icons/icons8-rain-96.png</file>
+    <file>Icons/icons8-sun-48.png</file>
+  </qresource>
+</RCC>
