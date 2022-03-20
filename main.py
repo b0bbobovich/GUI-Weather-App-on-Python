@@ -109,16 +109,6 @@ class WeatherApp:
         return data
 
     def clear(self):
-        self.weather_widget_ui.weather.clear()
-        self.weather_widget_ui.temp.clear()
-        self.weather_widget_ui.maxtemp.clear()
-        self.weather_widget_ui.mintemp.clear()
-        self.weather_widget_ui.pressure.clear()
-        self.weather_widget_ui.humidity.clear()
-        self.weather_widget_ui.windspeed.clear()
-        self.weather_widget_ui.sunrise.clear()
-        self.weather_widget_ui.sunset.clear()
-
         self.weather_widget_ui.sun.setHidden(True)
         self.weather_widget_ui.thunderstorm.setHidden(True)
         self.weather_widget_ui.rain.setHidden(True)
