@@ -35,14 +35,14 @@ class WeatherApp:
             self.weather_widget_ui.weather.print('Enter the name of the country')
         elif country.upper() in ['USA', 'UNITED STATES', 'US']:
             country = 'United States of America'
-        elif country.upper() in ['GB', 'GREAT BRITAIN', 'ENGLAND', 'IRELAND']:
+        elif country.upper() in ['GB', 'GREAT BRITAIN', 'ENGLAND', 'IRELAND', 'BRITAIN']:
             country = 'United Kingdom of Great Britain and Northern Ireland'
 
         if self.get_city_coord(city, country):
             data = self.get_weather_data(self.coord)
 
             current_weather = data['current']['weather'][0]['main']
-            current_temp = data['current']['temp']
+            current_temp = int(data['current']['temp'])
             humidity = data['current']['humidity']
             max_temp = data['daily'][0]['temp']['max']
             min_temp = data['daily'][0]['temp']['min']
@@ -55,12 +55,12 @@ class WeatherApp:
             sunset_time = sunset_date.split()[1]
 
             self.weather_widget_ui.weather.setText(current_weather)
-            self.weather_widget_ui.temp.setText(str(current_temp))
-            self.weather_widget_ui.maxtemp.setText(f'Daily max temp: {max_temp}')
-            self.weather_widget_ui.mintemp.setText(f'Daily min temp: {min_temp}')
-            self.weather_widget_ui.pressure.setText(f'Pressure: {current_presure}')
-            self.weather_widget_ui.humidity.setText(f'Humidity: {humidity}')
-            self.weather_widget_ui.windspeed.setText(f'Wind speed: {current_wind_speed}')
+            self.weather_widget_ui.temp.setText(str(current_temp) + '°C')
+            self.weather_widget_ui.maxtemp.setText(f'Daily max temp: {int(max_temp)} °C')
+            self.weather_widget_ui.mintemp.setText(f'Daily min temp: {int(min_temp)} °C')
+            self.weather_widget_ui.pressure.setText(f'Pressure: {current_presure} mm Hg')
+            self.weather_widget_ui.humidity.setText(f'Humidity: {humidity} %')
+            self.weather_widget_ui.windspeed.setText(f'Wind speed: {current_wind_speed} m/s')
 
             self.weather_widget_ui.sunrise.setText(f'Sunrise: {sunrise_time}')
             self.weather_widget_ui.sunset.setText(f'Sunset: {sunset_time}')
@@ -106,9 +106,11 @@ class WeatherApp:
 
         resp = requests.get(url_weather_api, params=parametrs)
         data = resp.json()
+        print('Hello')
         return data
 
     def clear(self):
+
         self.weather_widget_ui.sun.setHidden(True)
         self.weather_widget_ui.thunderstorm.setHidden(True)
         self.weather_widget_ui.rain.setHidden(True)
